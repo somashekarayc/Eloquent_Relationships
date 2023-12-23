@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Contact;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class PhoneNumberFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'contact_id' => Contact::factory(),
+            'number' => $this->faker->phoneNumber()
         ];
     }
 }
