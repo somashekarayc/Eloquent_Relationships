@@ -13,7 +13,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return Contact::with('phoneNumber')->get();
     }
 
     /**
@@ -37,7 +37,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return $contact;
     }
 
     /**
