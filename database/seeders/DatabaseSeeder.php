@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-    //    Contact::factory()->count(25)->has(PhoneNumber::factory()->count(2))->create();
-    //    User::factory()->count(25)->create();
+        User::factory()->count(25)->has(Contact::factory()->count(10)->has(PhoneNumber::factory()->count(2)))->create();
     }
 }

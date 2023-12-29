@@ -3,19 +3,38 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
     public function contacts()
-{
-return $this->hasMany(Contact::class);
-}
+    {
+        return $this->hasMany(Contact::class);
+    }
+
+    public function newestContact(): HasOne
+    {
+        return $this->hasOne(Contact::class)->latestOfMany();
+    }
+    public function oldestContact(): HasOne
+    {
+        return $this->hasOne(Contact::class)->oldestOfMany();
+    }
+    // public function emergencyContact(): HasOne
+    // {
+    //     return $this->hasOne(Contact::class)->ofMany('priority', 'max');
+    // }
+
+    public function phoneNumbers()
+    {
+        return $this->through('contact')->has('phoneNumber');
+    }
 
 
     /**
