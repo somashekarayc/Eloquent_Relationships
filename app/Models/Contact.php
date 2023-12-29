@@ -13,4 +13,10 @@ class Contact extends Model
     {
         return $this->hasOne(PhoneNumber::class);
     }
+
+    public function user()
+{
+return $this->belongsTo(User::class);
+}
+
 }
