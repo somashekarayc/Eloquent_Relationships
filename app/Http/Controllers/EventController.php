@@ -12,13 +12,13 @@ class EventController extends Controller
    
     public function index()
     {
-        Contact::get();
+        Event::get();
     }
 
 
     public function create()
     {
-        //
+        
     }
 
 
@@ -32,7 +32,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return 
     }
 
     /**
