@@ -32,7 +32,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return 
+        return $event;
+ 
     }
 
     /**
