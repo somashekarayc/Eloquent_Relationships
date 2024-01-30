@@ -8,9 +8,7 @@ use App\Http\Requests\UpdateContactRequest;
 
 class ContactController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         return Contact::with('phoneNumber')->get();
